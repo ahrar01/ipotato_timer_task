@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -34,17 +34,43 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  
+  # MobX is a library for reactively managing the state of your applications. Use the power of
+  # observables, actions, and reactions to supercharge your Dart and Flutter apps. 
+  mobx: ^2.1.3
+  flutter_mobx: ^2.0.6+5
+
+  # An helper to easily exposes a value using InheritedWidget without having to write one. 
+  provider: ^6.0.4
+
+  # for code generator for data-classes/unions/pattern-matching/cloning
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
+
+  # Reactive persistence library SQL
+  drift: ^2.2.0
+  path_provider: ^2.0.11
+  path: ^1.8.1
+  sqlite3_flutter_libs: ^0.5.0
+
+  # for dependency injection
+  get_it: ^7.2.0
+
+  #for SVG files
+  flutter_svg: ^1.1.6
+
+  assets_audio_player: ^3.0.6
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^2.3.2
+  mobx_codegen: ^2.1.1
+  drift_dev: ^2.2.0+1
+  mockito: ^5.3.2
+  flutter_lints: ^2.0.1
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
