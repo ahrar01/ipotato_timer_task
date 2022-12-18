@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ipotato_timer (profile mode)",
+            "name": "ipotato_timer (debug mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug"

@@ -16,10 +16,6 @@ include: package:flutter_lints/flutter.yaml
   # For more information see:
   # https://dart.dev/guides/language/analysis-options#enabling-additional-type-checks
 analyzer:
-  language:
-    strict-casts: true
-    strict-inference: true
-    strict-raw-types: true
 
   errors:
     close_sinks: ignore
