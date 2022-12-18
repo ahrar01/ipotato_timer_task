@@ -16,16 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Task {
-  int? get taskID => throw _privateConstructorUsedError;
-  set taskID(int? value) => throw _privateConstructorUsedError;
-  String? get taskName => throw _privateConstructorUsedError;
-  set taskName(String? value) => throw _privateConstructorUsedError;
-  String? get taskDescription => throw _privateConstructorUsedError;
-  set taskDescription(String? value) => throw _privateConstructorUsedError;
-  bool? get taskComplete => throw _privateConstructorUsedError;
-  set taskComplete(bool? value) => throw _privateConstructorUsedError;
-  Duration? get taskDuration => throw _privateConstructorUsedError;
-  set taskDuration(Duration? value) => throw _privateConstructorUsedError;
+  String get taskID => throw _privateConstructorUsedError;
+  set taskID(String value) => throw _privateConstructorUsedError;
+  String get taskName => throw _privateConstructorUsedError;
+  set taskName(String value) => throw _privateConstructorUsedError;
+  String get taskDescription => throw _privateConstructorUsedError;
+  set taskDescription(String value) => throw _privateConstructorUsedError;
+  bool get taskComplete => throw _privateConstructorUsedError;
+  set taskComplete(bool value) => throw _privateConstructorUsedError;
+  Duration get taskDuration => throw _privateConstructorUsedError;
+  set taskDuration(Duration value) => throw _privateConstructorUsedError;
   Timer? get ownTimer => throw _privateConstructorUsedError;
   set ownTimer(Timer? value) => throw _privateConstructorUsedError;
 
@@ -39,11 +39,11 @@ abstract class $TaskCopyWith<$Res> {
       _$TaskCopyWithImpl<$Res, Task>;
   @useResult
   $Res call(
-      {int? taskID,
-      String? taskName,
-      String? taskDescription,
-      bool? taskComplete,
-      Duration? taskDuration,
+      {String taskID,
+      String taskName,
+      String taskDescription,
+      bool taskComplete,
+      Duration taskDuration,
       Timer? ownTimer});
 }
 
@@ -60,34 +60,34 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskID = freezed,
-    Object? taskName = freezed,
-    Object? taskDescription = freezed,
-    Object? taskComplete = freezed,
-    Object? taskDuration = freezed,
+    Object? taskID = null,
+    Object? taskName = null,
+    Object? taskDescription = null,
+    Object? taskComplete = null,
+    Object? taskDuration = null,
     Object? ownTimer = freezed,
   }) {
     return _then(_value.copyWith(
-      taskID: freezed == taskID
+      taskID: null == taskID
           ? _value.taskID
           : taskID // ignore: cast_nullable_to_non_nullable
-              as int?,
-      taskName: freezed == taskName
+              as String,
+      taskName: null == taskName
           ? _value.taskName
           : taskName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taskDescription: freezed == taskDescription
+              as String,
+      taskDescription: null == taskDescription
           ? _value.taskDescription
           : taskDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taskComplete: freezed == taskComplete
+              as String,
+      taskComplete: null == taskComplete
           ? _value.taskComplete
           : taskComplete // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      taskDuration: freezed == taskDuration
+              as bool,
+      taskDuration: null == taskDuration
           ? _value.taskDuration
           : taskDuration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as Duration,
       ownTimer: freezed == ownTimer
           ? _value.ownTimer
           : ownTimer // ignore: cast_nullable_to_non_nullable
@@ -103,11 +103,11 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? taskID,
-      String? taskName,
-      String? taskDescription,
-      bool? taskComplete,
-      Duration? taskDuration,
+      {String taskID,
+      String taskName,
+      String taskDescription,
+      bool taskComplete,
+      Duration taskDuration,
       Timer? ownTimer});
 }
 
@@ -120,34 +120,34 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskID = freezed,
-    Object? taskName = freezed,
-    Object? taskDescription = freezed,
-    Object? taskComplete = freezed,
-    Object? taskDuration = freezed,
+    Object? taskID = null,
+    Object? taskName = null,
+    Object? taskDescription = null,
+    Object? taskComplete = null,
+    Object? taskDuration = null,
     Object? ownTimer = freezed,
   }) {
     return _then(_$_Task(
-      taskID: freezed == taskID
+      taskID: null == taskID
           ? _value.taskID
           : taskID // ignore: cast_nullable_to_non_nullable
-              as int?,
-      taskName: freezed == taskName
+              as String,
+      taskName: null == taskName
           ? _value.taskName
           : taskName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taskDescription: freezed == taskDescription
+              as String,
+      taskDescription: null == taskDescription
           ? _value.taskDescription
           : taskDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taskComplete: freezed == taskComplete
+              as String,
+      taskComplete: null == taskComplete
           ? _value.taskComplete
           : taskComplete // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      taskDuration: freezed == taskDuration
+              as bool,
+      taskDuration: null == taskDuration
           ? _value.taskDuration
           : taskDuration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as Duration,
       ownTimer: freezed == ownTimer
           ? _value.ownTimer
           : ownTimer // ignore: cast_nullable_to_non_nullable
@@ -160,23 +160,23 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
 
 class _$_Task implements _Task {
   _$_Task(
-      {this.taskID,
-      this.taskName,
-      this.taskDescription,
-      this.taskComplete,
-      this.taskDuration,
+      {required this.taskID,
+      required this.taskName,
+      required this.taskDescription,
+      required this.taskComplete,
+      required this.taskDuration,
       this.ownTimer});
 
   @override
-  int? taskID;
+  String taskID;
   @override
-  String? taskName;
+  String taskName;
   @override
-  String? taskDescription;
+  String taskDescription;
   @override
-  bool? taskComplete;
+  bool taskComplete;
   @override
-  Duration? taskDuration;
+  Duration taskDuration;
   @override
   Timer? ownTimer;
 
@@ -194,28 +194,28 @@ class _$_Task implements _Task {
 
 abstract class _Task implements Task {
   factory _Task(
-      {int? taskID,
-      String? taskName,
-      String? taskDescription,
-      bool? taskComplete,
-      Duration? taskDuration,
+      {required String taskID,
+      required String taskName,
+      required String taskDescription,
+      required bool taskComplete,
+      required Duration taskDuration,
       Timer? ownTimer}) = _$_Task;
 
   @override
-  int? get taskID;
-  set taskID(int? value);
+  String get taskID;
+  set taskID(String value);
   @override
-  String? get taskName;
-  set taskName(String? value);
+  String get taskName;
+  set taskName(String value);
   @override
-  String? get taskDescription;
-  set taskDescription(String? value);
+  String get taskDescription;
+  set taskDescription(String value);
   @override
-  bool? get taskComplete;
-  set taskComplete(bool? value);
+  bool get taskComplete;
+  set taskComplete(bool value);
   @override
-  Duration? get taskDuration;
-  set taskDuration(Duration? value);
+  Duration get taskDuration;
+  set taskDuration(Duration value);
   @override
   Timer? get ownTimer;
   set ownTimer(Timer? value);

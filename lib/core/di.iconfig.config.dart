@@ -38,7 +38,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i4.TaskDao>(() => _i4.TaskDao(gh<_i3.AppDatabase>()));
     gh.lazySingleton<_i5.TaskRepository>(
         () => _i5.TaskRepository(gh<_i4.TaskDao>()));
-    gh.factory<_i6.TasksViewModel>(
+    gh.lazySingleton<_i6.TasksViewModel>(
         () => _i6.TasksViewModel(gh<_i5.TaskRepository>()));
     return this;
   }

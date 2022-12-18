@@ -3,8 +3,102 @@
 part of 'app_database.dart';
 
 // ignore_for_file: type=lint
-class TasksTableCompanion extends UpdateCompanion<Task> {
-  final Value<int> id;
+class TasksTableData extends DataClass implements Insertable<TasksTableData> {
+  final String id;
+  final String title;
+  final String description;
+  final int timeLeft;
+  final bool finished;
+  const TasksTableData(
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.timeLeft,
+      required this.finished});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['title'] = Variable<String>(title);
+    map['description'] = Variable<String>(description);
+    map['time_left'] = Variable<int>(timeLeft);
+    map['finished'] = Variable<bool>(finished);
+    return map;
+  }
+
+  TasksTableCompanion toCompanion(bool nullToAbsent) {
+    return TasksTableCompanion(
+      id: Value(id),
+      title: Value(title),
+      description: Value(description),
+      timeLeft: Value(timeLeft),
+      finished: Value(finished),
+    );
+  }
+
+  factory TasksTableData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return TasksTableData(
+      id: serializer.fromJson<String>(json['id']),
+      title: serializer.fromJson<String>(json['title']),
+      description: serializer.fromJson<String>(json['description']),
+      timeLeft: serializer.fromJson<int>(json['timeLeft']),
+      finished: serializer.fromJson<bool>(json['finished']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'title': serializer.toJson<String>(title),
+      'description': serializer.toJson<String>(description),
+      'timeLeft': serializer.toJson<int>(timeLeft),
+      'finished': serializer.toJson<bool>(finished),
+    };
+  }
+
+  TasksTableData copyWith(
+          {String? id,
+          String? title,
+          String? description,
+          int? timeLeft,
+          bool? finished}) =>
+      TasksTableData(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        timeLeft: timeLeft ?? this.timeLeft,
+        finished: finished ?? this.finished,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('TasksTableData(')
+          ..write('id: $id, ')
+          ..write('title: $title, ')
+          ..write('description: $description, ')
+          ..write('timeLeft: $timeLeft, ')
+          ..write('finished: $finished')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, title, description, timeLeft, finished);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is TasksTableData &&
+          other.id == this.id &&
+          other.title == this.title &&
+          other.description == this.description &&
+          other.timeLeft == this.timeLeft &&
+          other.finished == this.finished);
+}
+
+class TasksTableCompanion extends UpdateCompanion<TasksTableData> {
+  final Value<String> id;
   final Value<String> title;
   final Value<String> description;
   final Value<int> timeLeft;
@@ -17,17 +111,18 @@ class TasksTableCompanion extends UpdateCompanion<Task> {
     this.finished = const Value.absent(),
   });
   TasksTableCompanion.insert({
-    this.id = const Value.absent(),
+    required String id,
     required String title,
     required String description,
     required int timeLeft,
     required bool finished,
-  })  : title = Value(title),
+  })  : id = Value(id),
+        title = Value(title),
         description = Value(description),
         timeLeft = Value(timeLeft),
         finished = Value(finished);
-  static Insertable<Task> custom({
-    Expression<int>? id,
+  static Insertable<TasksTableData> custom({
+    Expression<String>? id,
     Expression<String>? title,
     Expression<String>? description,
     Expression<int>? timeLeft,
@@ -43,7 +138,7 @@ class TasksTableCompanion extends UpdateCompanion<Task> {
   }
 
   TasksTableCompanion copyWith(
-      {Value<int>? id,
+      {Value<String>? id,
       Value<String>? title,
       Value<String>? description,
       Value<int>? timeLeft,
@@ -61,7 +156,7 @@ class TasksTableCompanion extends UpdateCompanion<Task> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['id'] = Variable<int>(id.value);
+      map['id'] = Variable<String>(id.value);
     }
     if (title.present) {
       map['title'] = Variable<String>(title.value);
@@ -91,38 +186,19 @@ class TasksTableCompanion extends UpdateCompanion<Task> {
   }
 }
 
-class _$TaskInsertable implements Insertable<Task> {
-  Task _object;
-
-  _$TaskInsertable(this._object);
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    return TasksTableCompanion().toColumns(false);
-  }
-}
-
-extension TaskToInsertable on Task {
-  _$TaskInsertable toInsertable() {
-    return _$TaskInsertable(this);
-  }
-}
-
 class $TasksTableTable extends TasksTable
-    with TableInfo<$TasksTableTable, Task> {
+    with TableInfo<$TasksTableTable, TasksTableData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $TasksTableTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
   static const VerificationMeta _titleMeta = const VerificationMeta('title');
   @override
   late final GeneratedColumn<String> title = GeneratedColumn<String>(
@@ -162,12 +238,14 @@ class $TasksTableTable extends TasksTable
   @override
   String get actualTableName => 'tasks_table';
   @override
-  VerificationContext validateIntegrity(Insertable<Task> instance,
+  VerificationContext validateIntegrity(Insertable<TasksTableData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
     }
     if (data.containsKey('title')) {
       context.handle(
@@ -199,11 +277,22 @@ class $TasksTableTable extends TasksTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => const {};
   @override
-  Task map(Map<String, dynamic> data, {String? tablePrefix}) {
+  TasksTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return Task();
+    return TasksTableData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      title: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
+      description: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
+      timeLeft: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}time_left'])!,
+      finished: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}finished'])!,
+    );
   }
 
   @override

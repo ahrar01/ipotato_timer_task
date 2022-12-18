@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ipotato_timer_task/utils/assets.dart';
+import '../../../../utils/assets.dart';
 
 class NoTasksPlaceHolder extends StatelessWidget {
   const NoTasksPlaceHolder({Key? key}) : super(key: key);

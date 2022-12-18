@@ -6,11 +6,11 @@ part 'task_modal.freezed.dart';
 @unfreezed
 class Task with _$Task {
   factory Task({
-     int? taskID,
-     String? taskName,
-     String? taskDescription,
-     bool? taskComplete,
-     Duration? taskDuration,
-     Timer? ownTimer,
+    required String taskID,
+    required String taskName,
+    required String taskDescription,
+    required bool taskComplete,
+    required Duration taskDuration,
+    Timer? ownTimer
   }) = _Task;
 }

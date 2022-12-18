@@ -25,6 +25,14 @@ mixin _$TasksViewModel on TasksViewModelBase, Store {
     });
   }
 
+  late final _$addTaskAsyncAction =
+      AsyncAction('TasksViewModelBase.addTask', context: context);
+
+  @override
+  Future<void> addTask(Task task) {
+    return _$addTaskAsyncAction.run(() => super.addTask(task));
+  }
+
   late final _$reduceTaskTimeAsyncAction =
       AsyncAction('TasksViewModelBase.reduceTaskTime', context: context);
 

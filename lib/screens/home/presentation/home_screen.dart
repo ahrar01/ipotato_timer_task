@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ipotato_timer_task/screens/home/presentation/task_view_model.dart';
-import 'package:ipotato_timer_task/screens/home/presentation/widgets/no_tasks_placeholder.dart';
-import 'package:ipotato_timer_task/screens/home/presentation/widgets/single_task_widget.dart';
+import 'add_task_overlay.dart';
+import 'task_view_model.dart';
+import 'widgets/no_tasks_placeholder.dart';
+import 'widgets/single_task_widget.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../core/di.iconfig.dart';
@@ -44,7 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.add_circle_outline_sharp,
           color: Theme.of(context).colorScheme.inverseSurface,
         ),
-        onPressed: () {},
+        onPressed: () {
+          AddTimerModal().showAddTimerModalSheet(context);
+        },
       ),
       body: Observer(
         builder: (context) {
@@ -54,22 +57,21 @@ class _HomeScreenState extends State<HomeScreen> {
               ? const NoTasksPlaceHolder()
               : ListView.builder(
                   itemCount: viewModel.taskList.length,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 16),
                   itemBuilder: (context, i) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25.0, vertical: 20),
-                      child: SingleTaskWidget(
-                        task: viewModel.taskList[i],
-                        onTaskStopped: () {
-                          viewModel.setTaskAsComplete(index: i);
-                        },
-                        onTaskCompletePressed: () {
-                          viewModel.setTaskAsComplete(index: i);
-                        },
-                        onTaskPlayed: () {
-                          viewModel.reduceTaskTime(index: i);
-                        },
-                      ),
+                    return SingleTaskWidget(
+                      task: viewModel.taskList[i],
+                      onTaskStopped: () {
+                        viewModel.setTaskAsComplete(index: i);
+                      },
+                      onTaskCompletePressed: () {
+                        viewModel.setTaskAsComplete(index: i);
+                      },
+                      onTaskPlayed: () {
+                        viewModel.reduceTaskTime(index: i);
+                      },
                     );
                   },
                 );

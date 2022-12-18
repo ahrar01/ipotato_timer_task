@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ipotato_timer_task/utils/assets.dart';
+import '../../../../utils/assets.dart';
 
 import '../../domain/task_modal.dart';
 
@@ -35,14 +35,14 @@ class SingleTaskWidget extends StatelessWidget {
             const SizedBox(
               height: 32,
             ),
-            if (!task.taskComplete!)
+            if (!task.taskComplete)
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Spacer(),
                   Text(
-                    "${task.taskDuration!.inHours.toString().padLeft(2, "0")}:${task.taskDuration!.inMinutes.remainder(60).toString().padLeft(2, "0")}:${task.taskDuration!.inSeconds.remainder(60).toString().padLeft(2, "0")}",
+                    "${task.taskDuration.inHours.toString().padLeft(2, "0")}:${task.taskDuration.inMinutes.remainder(60).toString().padLeft(2, "0")}:${task.taskDuration.inSeconds.remainder(60).toString().padLeft(2, "0")}",
                     style: Theme.of(context)
                         .textTheme
                         .headlineLarge!
@@ -59,10 +59,8 @@ class SingleTaskWidget extends StatelessWidget {
                     child: IconButton(
                       key: const ValueKey("StopButton_SingleTaskWidget"),
                       padding: const EdgeInsets.all(3),
-                      constraints: const BoxConstraints(),
-                      onPressed: () {
-                        onTaskStopped!();
-                      },
+                      onPressed: onTaskStopped,
+                      iconSize: 35,
                       icon: Icon(
                         Icons.stop,
                         color: Theme.of(context).colorScheme.onTertiary,
@@ -80,10 +78,8 @@ class SingleTaskWidget extends StatelessWidget {
                     child: IconButton(
                       key: const ValueKey("PlayButton_SingleTaskWidget"),
                       padding: const EdgeInsets.all(3),
-                      constraints: const BoxConstraints(),
-                      onPressed: () {
-                        onTaskPlayed!();
-                      },
+                      iconSize: 35,
+                      onPressed: onTaskPlayed,
                       icon: Icon(
                         Icons.play_arrow,
                         color: Theme.of(context).colorScheme.onTertiary,
@@ -101,7 +97,11 @@ class SingleTaskWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(Assets.iSoundWaveSVG),
+                  SvgPicture.asset(
+                    Assets.iSoundWaveSVG,
+                    height: 24,
+                    width: 24,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: Text(
@@ -119,7 +119,7 @@ class SingleTaskWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 29.0, left: 32),
               child: Text(
-                task.taskName!,
+                task.taskName,
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge!
@@ -129,7 +129,7 @@ class SingleTaskWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 29.0, left: 32),
               child: Text(
-                task.taskDescription!,
+                task.taskDescription,
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
@@ -139,7 +139,7 @@ class SingleTaskWidget extends StatelessWidget {
             const SizedBox(
               height: 45,
             ),
-            if (task.taskComplete!)
+            if (task.taskComplete)
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 50,
@@ -152,9 +152,7 @@ class SingleTaskWidget extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                     ),
-                    onPressed: () {
-                      onTaskCompletePressed!();
-                    },
+                    onPressed: onTaskCompletePressed,
                     child: Text(
                       "Mark Complete",
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(
