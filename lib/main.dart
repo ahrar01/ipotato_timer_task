@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ipotato_timer_task/screens/splash/splash_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/home/home_screen.dart';
+import 'screens/splash/splash_screen.dart';
+import 'themes/providers/theme_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  final customThemes = MyThemes();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'iPotato Timer',
-      themeMode: ThemeMode.light,
-      debugShowCheckedModeBanner: false,
-      routerConfig: _router,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ThemeProvider>(create: (ctx) => ThemeProvider()),
+      ],
+      child: MaterialApp.router(
+        title: 'iPotato Timer',
+        themeMode: ThemeMode.light,
+        debugShowCheckedModeBanner: false,
+        theme: customThemes.buildLightTheme(),
+        darkTheme: customThemes.buildDarkTheme(),
+        routerConfig: _router,
+      ),
     );
   }
 }
