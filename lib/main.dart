@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import 'core/di.iconfig.dart';
 import 'screens/home/presentation/home_screen.dart';
 import 'screens/splash/splash_screen.dart';
 import 'themes/theme_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await configureInjection();
+
   runApp(MyApp());
 }
 

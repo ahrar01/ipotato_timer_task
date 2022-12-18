@@ -31,9 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SvgPicture.asset(Assets.AppIconSVG, semanticsLabel: 'App Icon'),
+            SvgPicture.asset(Assets.appIconSVG, semanticsLabel: 'App Icon'),
             const SizedBox(height: 50),
-            SvgPicture.asset(Assets.SplashScreenText,
+            SvgPicture.asset(Assets.splashScreenText,
                 semanticsLabel: 'Splash Screen Text'),
           ]),
     );

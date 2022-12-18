@@ -1,12 +1,15 @@
 import 'dart:io';
 import 'package:drift/native.dart';
+import 'package:ipotato_timer_task/screens/home/domain/task_modal.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:drift/drift.dart';
 
+import '../../screens/home/data/task_table.dart';
+
 part 'app_database.g.dart';
 
-@DriftDatabase(tables: [])
+@DriftDatabase(tables: [TasksTable])
 class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 

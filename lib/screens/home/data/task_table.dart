@@ -1,9 +1,9 @@
 import 'package:drift/drift.dart';
 import 'package:ipotato_timer_task/screens/home/domain/task_modal.dart';
 
-@UseRowClass(TaskModel, generateInsertable: true)
+@UseRowClass(Task, generateInsertable: true)
 class TasksTable extends Table {
-  TextColumn get id => text().unique()();
+  IntColumn get id => integer().autoIncrement()();
 
   TextColumn get title => text().withLength(max: 32)();
 
@@ -12,4 +12,5 @@ class TasksTable extends Table {
   IntColumn get timeLeft => integer()();
 
   BoolColumn get finished => boolean()();
+
 }

@@ -47,9 +47,9 @@ dependencies:
   freezed_annotation: ^2.2.0
 
   # Reactive persistence library SQL
-  drift: ^2.2.0
-  path_provider: ^2.0.11
-  path: ^1.8.1
+  drift: ^2.1.0
+  path_provider: ^2.0.0
+  path: ^1.8.2
   sqlite3_flutter_libs: ^0.5.0
 
   # for dependency injection
@@ -59,6 +59,7 @@ dependencies:
   #for SVG files
   flutter_svg: ^1.1.6
 
+  # A package that allows you to play audio files.
   assets_audio_player: ^3.0.6
 
  #for navigation
@@ -70,8 +71,8 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.3.2
   mobx_codegen: ^2.1.1
-  drift_dev: ^2.2.0+1
-  freezed: ^2.3.2
+  drift_dev: ^2.1.0
+  freezed: ^2.2.0
   mockito: ^5.3.2
   flutter_lints: ^2.0.1
   injectable_generator: ^2.1.3
@@ -91,3 +92,4 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/sound/

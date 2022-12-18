@@ -4,13 +4,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'task_modal.freezed.dart';
 
 @unfreezed
-class TaskModel with _$TaskModel {
-  factory TaskModel({
-    required String taskID,
-    required String taskName,
-    required String taskDescription,
-    required bool taskComplete,
-    required Duration taskDuration,
-    required Timer? ownTimer,
-  }) = _TaskModel;
+class Task with _$Task {
+  factory Task({
+     int? taskID,
+     String? taskName,
+     String? taskDescription,
+     bool? taskComplete,
+     Duration? taskDuration,
+     Timer? ownTimer,
+  }) = _Task;
 }

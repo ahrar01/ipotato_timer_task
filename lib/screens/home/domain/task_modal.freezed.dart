@@ -15,43 +15,42 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TaskModel {
-  String get taskID => throw _privateConstructorUsedError;
-  set taskID(String value) => throw _privateConstructorUsedError;
-  String get taskName => throw _privateConstructorUsedError;
-  set taskName(String value) => throw _privateConstructorUsedError;
-  String get taskDescription => throw _privateConstructorUsedError;
-  set taskDescription(String value) => throw _privateConstructorUsedError;
-  bool get taskComplete => throw _privateConstructorUsedError;
-  set taskComplete(bool value) => throw _privateConstructorUsedError;
-  Duration get taskDuration => throw _privateConstructorUsedError;
-  set taskDuration(Duration value) => throw _privateConstructorUsedError;
+mixin _$Task {
+  int? get taskID => throw _privateConstructorUsedError;
+  set taskID(int? value) => throw _privateConstructorUsedError;
+  String? get taskName => throw _privateConstructorUsedError;
+  set taskName(String? value) => throw _privateConstructorUsedError;
+  String? get taskDescription => throw _privateConstructorUsedError;
+  set taskDescription(String? value) => throw _privateConstructorUsedError;
+  bool? get taskComplete => throw _privateConstructorUsedError;
+  set taskComplete(bool? value) => throw _privateConstructorUsedError;
+  Duration? get taskDuration => throw _privateConstructorUsedError;
+  set taskDuration(Duration? value) => throw _privateConstructorUsedError;
   Timer? get ownTimer => throw _privateConstructorUsedError;
   set ownTimer(Timer? value) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TaskModelCopyWith<TaskModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TaskCopyWith<Task> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TaskModelCopyWith<$Res> {
-  factory $TaskModelCopyWith(TaskModel value, $Res Function(TaskModel) then) =
-      _$TaskModelCopyWithImpl<$Res, TaskModel>;
+abstract class $TaskCopyWith<$Res> {
+  factory $TaskCopyWith(Task value, $Res Function(Task) then) =
+      _$TaskCopyWithImpl<$Res, Task>;
   @useResult
   $Res call(
-      {String taskID,
-      String taskName,
-      String taskDescription,
-      bool taskComplete,
-      Duration taskDuration,
+      {int? taskID,
+      String? taskName,
+      String? taskDescription,
+      bool? taskComplete,
+      Duration? taskDuration,
       Timer? ownTimer});
 }
 
 /// @nodoc
-class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
-    implements $TaskModelCopyWith<$Res> {
-  _$TaskModelCopyWithImpl(this._value, this._then);
+class _$TaskCopyWithImpl<$Res, $Val extends Task>
+    implements $TaskCopyWith<$Res> {
+  _$TaskCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -61,34 +60,34 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskID = null,
-    Object? taskName = null,
-    Object? taskDescription = null,
-    Object? taskComplete = null,
-    Object? taskDuration = null,
+    Object? taskID = freezed,
+    Object? taskName = freezed,
+    Object? taskDescription = freezed,
+    Object? taskComplete = freezed,
+    Object? taskDuration = freezed,
     Object? ownTimer = freezed,
   }) {
     return _then(_value.copyWith(
-      taskID: null == taskID
+      taskID: freezed == taskID
           ? _value.taskID
           : taskID // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskName: null == taskName
+              as int?,
+      taskName: freezed == taskName
           ? _value.taskName
           : taskName // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskDescription: null == taskDescription
+              as String?,
+      taskDescription: freezed == taskDescription
           ? _value.taskDescription
           : taskDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskComplete: null == taskComplete
+              as String?,
+      taskComplete: freezed == taskComplete
           ? _value.taskComplete
           : taskComplete // ignore: cast_nullable_to_non_nullable
-              as bool,
-      taskDuration: null == taskDuration
+              as bool?,
+      taskDuration: freezed == taskDuration
           ? _value.taskDuration
           : taskDuration // ignore: cast_nullable_to_non_nullable
-              as Duration,
+              as Duration?,
       ownTimer: freezed == ownTimer
           ? _value.ownTimer
           : ownTimer // ignore: cast_nullable_to_non_nullable
@@ -98,60 +97,57 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
 }
 
 /// @nodoc
-abstract class _$$_TaskModelCopyWith<$Res> implements $TaskModelCopyWith<$Res> {
-  factory _$$_TaskModelCopyWith(
-          _$_TaskModel value, $Res Function(_$_TaskModel) then) =
-      __$$_TaskModelCopyWithImpl<$Res>;
+abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
+  factory _$$_TaskCopyWith(_$_Task value, $Res Function(_$_Task) then) =
+      __$$_TaskCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String taskID,
-      String taskName,
-      String taskDescription,
-      bool taskComplete,
-      Duration taskDuration,
+      {int? taskID,
+      String? taskName,
+      String? taskDescription,
+      bool? taskComplete,
+      Duration? taskDuration,
       Timer? ownTimer});
 }
 
 /// @nodoc
-class __$$_TaskModelCopyWithImpl<$Res>
-    extends _$TaskModelCopyWithImpl<$Res, _$_TaskModel>
-    implements _$$_TaskModelCopyWith<$Res> {
-  __$$_TaskModelCopyWithImpl(
-      _$_TaskModel _value, $Res Function(_$_TaskModel) _then)
+class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
+    implements _$$_TaskCopyWith<$Res> {
+  __$$_TaskCopyWithImpl(_$_Task _value, $Res Function(_$_Task) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskID = null,
-    Object? taskName = null,
-    Object? taskDescription = null,
-    Object? taskComplete = null,
-    Object? taskDuration = null,
+    Object? taskID = freezed,
+    Object? taskName = freezed,
+    Object? taskDescription = freezed,
+    Object? taskComplete = freezed,
+    Object? taskDuration = freezed,
     Object? ownTimer = freezed,
   }) {
-    return _then(_$_TaskModel(
-      taskID: null == taskID
+    return _then(_$_Task(
+      taskID: freezed == taskID
           ? _value.taskID
           : taskID // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskName: null == taskName
+              as int?,
+      taskName: freezed == taskName
           ? _value.taskName
           : taskName // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskDescription: null == taskDescription
+              as String?,
+      taskDescription: freezed == taskDescription
           ? _value.taskDescription
           : taskDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskComplete: null == taskComplete
+              as String?,
+      taskComplete: freezed == taskComplete
           ? _value.taskComplete
           : taskComplete // ignore: cast_nullable_to_non_nullable
-              as bool,
-      taskDuration: null == taskDuration
+              as bool?,
+      taskDuration: freezed == taskDuration
           ? _value.taskDuration
           : taskDuration // ignore: cast_nullable_to_non_nullable
-              as Duration,
+              as Duration?,
       ownTimer: freezed == ownTimer
           ? _value.ownTimer
           : ownTimer // ignore: cast_nullable_to_non_nullable
@@ -162,69 +158,68 @@ class __$$_TaskModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TaskModel implements _TaskModel {
-  _$_TaskModel(
-      {required this.taskID,
-      required this.taskName,
-      required this.taskDescription,
-      required this.taskComplete,
-      required this.taskDuration,
-      required this.ownTimer});
+class _$_Task implements _Task {
+  _$_Task(
+      {this.taskID,
+      this.taskName,
+      this.taskDescription,
+      this.taskComplete,
+      this.taskDuration,
+      this.ownTimer});
 
   @override
-  String taskID;
+  int? taskID;
   @override
-  String taskName;
+  String? taskName;
   @override
-  String taskDescription;
+  String? taskDescription;
   @override
-  bool taskComplete;
+  bool? taskComplete;
   @override
-  Duration taskDuration;
+  Duration? taskDuration;
   @override
   Timer? ownTimer;
 
   @override
   String toString() {
-    return 'TaskModel(taskID: $taskID, taskName: $taskName, taskDescription: $taskDescription, taskComplete: $taskComplete, taskDuration: $taskDuration, ownTimer: $ownTimer)';
+    return 'Task(taskID: $taskID, taskName: $taskName, taskDescription: $taskDescription, taskComplete: $taskComplete, taskDuration: $taskDuration, ownTimer: $ownTimer)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaskModelCopyWith<_$_TaskModel> get copyWith =>
-      __$$_TaskModelCopyWithImpl<_$_TaskModel>(this, _$identity);
+  _$$_TaskCopyWith<_$_Task> get copyWith =>
+      __$$_TaskCopyWithImpl<_$_Task>(this, _$identity);
 }
 
-abstract class _TaskModel implements TaskModel {
-  factory _TaskModel(
-      {required String taskID,
-      required String taskName,
-      required String taskDescription,
-      required bool taskComplete,
-      required Duration taskDuration,
-      required Timer? ownTimer}) = _$_TaskModel;
+abstract class _Task implements Task {
+  factory _Task(
+      {int? taskID,
+      String? taskName,
+      String? taskDescription,
+      bool? taskComplete,
+      Duration? taskDuration,
+      Timer? ownTimer}) = _$_Task;
 
   @override
-  String get taskID;
-  set taskID(String value);
+  int? get taskID;
+  set taskID(int? value);
   @override
-  String get taskName;
-  set taskName(String value);
+  String? get taskName;
+  set taskName(String? value);
   @override
-  String get taskDescription;
-  set taskDescription(String value);
+  String? get taskDescription;
+  set taskDescription(String? value);
   @override
-  bool get taskComplete;
-  set taskComplete(bool value);
+  bool? get taskComplete;
+  set taskComplete(bool? value);
   @override
-  Duration get taskDuration;
-  set taskDuration(Duration value);
+  Duration? get taskDuration;
+  set taskDuration(Duration? value);
   @override
   Timer? get ownTimer;
   set ownTimer(Timer? value);
   @override
   @JsonKey(ignore: true)
-  _$$_TaskModelCopyWith<_$_TaskModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TaskCopyWith<_$_Task> get copyWith => throw _privateConstructorUsedError;
 }
