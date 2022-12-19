@@ -22,6 +22,8 @@ abstract class TasksViewModelBase with Store {
     getTasks();
   }
 
+  final assetsAudioPlayer = AssetsAudioPlayer();
+
   /// A observable list of tasks.
   @observable
   ObservableList<Task> taskList = ObservableList<Task>.of([]);
@@ -101,12 +103,17 @@ abstract class TasksViewModelBase with Store {
     await taskRepo.deleteTaskFromDatabase(taskList[index].taskID);
     taskList.removeAt(index);
     sortList();
+    assetsAudioPlayer.stop();
   }
 
   /// Play the sound file located in the assets folder.
   void playSound() {
-    AssetsAudioPlayer().open(
-      Audio(Assets.neverGonnaGiveYouSound),
+    assetsAudioPlayer.stop();
+    assetsAudioPlayer.open(
+      Audio(
+        Assets.neverGonnaGiveYouSound,
+      ),
+      showNotification: true,
     );
   }
 }
