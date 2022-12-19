@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:injectable/injectable.dart';
@@ -73,6 +74,8 @@ abstract class TasksViewModelBase with Store {
         taskRepo.updateTask(taskID: taskList[index].taskID, task: currentTask);
       } else {
         currentTask.taskComplete = true;
+        currentTask.isTimerStart = false;
+
         taskRepo.updateTask(taskID: taskList[index].taskID, task: currentTask);
         playSound();
         timer.cancel();
@@ -81,22 +84,23 @@ abstract class TasksViewModelBase with Store {
     });
   }
 
-/// It stops the timer of the task at the given index
-/// 
-/// Args:
-///   index (int): The index of the task in the list.
+  /// It stops the timer of the task at the given index
+  ///
+  /// Args:
+  ///   index (int): The index of the task in the list.
   @action
   Future<void> stopTaskTime({required int index}) async {
     final currentTask = taskList[index];
     if (currentTask.isTimerStart) {
-      if (taskList[index].ownTimer != null) taskList[index].ownTimer!.cancel();
-      currentTask.ownTimer = null;
+      if (taskList[index].ownTimer != null) {
+        taskList[index].ownTimer!.cancel();
+        taskList[index].isTimerStart = false;
+      }
       await taskRepo.updateTask(
           taskID: taskList[index].taskID, task: currentTask);
     }
     sortList();
   }
-
 
   void sortList() {
     taskList.sort((a, b) {
@@ -123,12 +127,16 @@ abstract class TasksViewModelBase with Store {
 
   /// Play the sound file located in the assets folder.
   void playSound() {
-    assetsAudioPlayer.stop();
-    assetsAudioPlayer.open(
-      Audio(
-        Assets.neverGonnaGiveYouSound,
-      ),
-      showNotification: true,
-    );
+    try {
+      assetsAudioPlayer.stop();
+      assetsAudioPlayer.open(
+        Audio(
+          Assets.neverGonnaGiveYouSound,
+        ),
+        showNotification: true,
+      );
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }
