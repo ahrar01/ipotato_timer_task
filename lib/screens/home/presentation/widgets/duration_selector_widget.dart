@@ -44,9 +44,8 @@ class DurationSelectorWidget extends StatelessWidget {
                         decoration:
                             const InputDecoration.collapsed(hintText: '00'),
                         textAlign: TextAlign.center,
-                        style:  TextStyle(
+                        style: TextStyle(
                           color: Theme.of(context).colorScheme.secondary,
-
                         ),
                       ),
                     ),
@@ -57,6 +56,7 @@ class DurationSelectorWidget extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     ":",
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
                 ),
@@ -140,6 +140,7 @@ class DurationSelectorWidget extends StatelessWidget {
                     child: SizedBox(
                       width: 25,
                       child: TextField(
+                        key: const ValueKey("secondsTimeKey"),
                         keyboardType: TextInputType.number,
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(2),

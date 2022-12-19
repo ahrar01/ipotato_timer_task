@@ -133,7 +133,6 @@ abstract class TasksViewModelBase with Store {
         Audio(
           Assets.neverGonnaGiveYouSound,
         ),
-        showNotification: true,
       );
     } catch (e) {
       log(e.toString());

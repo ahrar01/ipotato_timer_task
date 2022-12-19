@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        key: const ValueKey("floatingActionButtonKey"),
         child: Icon(
           Icons.add_circle_outline_sharp,
           color: Theme.of(context).colorScheme.inverseSurface,
@@ -51,8 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Observer(
         builder: (context) {
-          print("changed");
-
           return viewModel.taskList.isEmpty
               ? const NoTasksPlaceHolder()
               : ListView.builder(
