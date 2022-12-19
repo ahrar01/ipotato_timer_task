@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'add_task_overlay.dart';
 import 'task_view_model.dart';
 import 'widgets/no_tasks_placeholder.dart';
-import 'widgets/single_task_widget.dart';
+import 'widgets/single_task_tile.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../core/di.iconfig.dart';
@@ -61,13 +61,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 16),
                   itemBuilder: (context, i) {
-                    return SingleTaskWidget(
+                    return SingleTaskTile(
                       task: viewModel.taskList[i],
                       onTaskStopped: () {
                         viewModel.setTaskAsComplete(index: i);
                       },
                       onTaskCompletePressed: () {
                         viewModel.setTaskAsComplete(index: i);
+                      },
+                      onTaskPause: () {
+                        viewModel.stopTaskTime(index: i);
                       },
                       onTaskPlayed: () {
                         viewModel.reduceTaskTime(index: i);

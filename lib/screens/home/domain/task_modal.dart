@@ -5,12 +5,12 @@ part 'task_modal.freezed.dart';
 
 @unfreezed
 class Task with _$Task {
-  factory Task({
-    required String taskID,
-    required String taskName,
-    required String taskDescription,
-    required bool taskComplete,
-    required Duration taskDuration,
-    Timer? ownTimer
-  }) = _Task;
+  factory Task(
+      {required String taskID,
+      required String taskName,
+      required String taskDescription,
+      required bool taskComplete,
+      @Default(false) bool isTimerStart,
+      required Duration taskDuration,
+      Timer? ownTimer}) = _Task;
 }

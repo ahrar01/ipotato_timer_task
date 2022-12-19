@@ -71,7 +71,7 @@ class AddTimerModal {
                                       textEditingController:
                                           taskTitleController,
                                       maxLines: 1,
-                                      hintText: 'Superdesigner',
+                                      hintText: 'Enter title',
                                     ),
                                     const SizedBox(
                                       height: 36,
@@ -81,7 +81,7 @@ class AddTimerModal {
                                       textEditingController:
                                           taskDescriptionController,
                                       maxLines: 12,
-                                      hintText: 'e.g. john@gmail.com',
+                                      hintText: 'e.g. go out in one hour',
                                     ),
                                     const SizedBox(
                                       height: 36,

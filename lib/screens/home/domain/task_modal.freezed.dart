@@ -24,6 +24,8 @@ mixin _$Task {
   set taskDescription(String value) => throw _privateConstructorUsedError;
   bool get taskComplete => throw _privateConstructorUsedError;
   set taskComplete(bool value) => throw _privateConstructorUsedError;
+  bool get isTimerStart => throw _privateConstructorUsedError;
+  set isTimerStart(bool value) => throw _privateConstructorUsedError;
   Duration get taskDuration => throw _privateConstructorUsedError;
   set taskDuration(Duration value) => throw _privateConstructorUsedError;
   Timer? get ownTimer => throw _privateConstructorUsedError;
@@ -43,6 +45,7 @@ abstract class $TaskCopyWith<$Res> {
       String taskName,
       String taskDescription,
       bool taskComplete,
+      bool isTimerStart,
       Duration taskDuration,
       Timer? ownTimer});
 }
@@ -64,6 +67,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? taskName = null,
     Object? taskDescription = null,
     Object? taskComplete = null,
+    Object? isTimerStart = null,
     Object? taskDuration = null,
     Object? ownTimer = freezed,
   }) {
@@ -83,6 +87,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
       taskComplete: null == taskComplete
           ? _value.taskComplete
           : taskComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isTimerStart: null == isTimerStart
+          ? _value.isTimerStart
+          : isTimerStart // ignore: cast_nullable_to_non_nullable
               as bool,
       taskDuration: null == taskDuration
           ? _value.taskDuration
@@ -107,6 +115,7 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       String taskName,
       String taskDescription,
       bool taskComplete,
+      bool isTimerStart,
       Duration taskDuration,
       Timer? ownTimer});
 }
@@ -124,6 +133,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
     Object? taskName = null,
     Object? taskDescription = null,
     Object? taskComplete = null,
+    Object? isTimerStart = null,
     Object? taskDuration = null,
     Object? ownTimer = freezed,
   }) {
@@ -143,6 +153,10 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
       taskComplete: null == taskComplete
           ? _value.taskComplete
           : taskComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isTimerStart: null == isTimerStart
+          ? _value.isTimerStart
+          : isTimerStart // ignore: cast_nullable_to_non_nullable
               as bool,
       taskDuration: null == taskDuration
           ? _value.taskDuration
@@ -164,6 +178,7 @@ class _$_Task implements _Task {
       required this.taskName,
       required this.taskDescription,
       required this.taskComplete,
+      this.isTimerStart = false,
       required this.taskDuration,
       this.ownTimer});
 
@@ -176,13 +191,16 @@ class _$_Task implements _Task {
   @override
   bool taskComplete;
   @override
+  @JsonKey()
+  bool isTimerStart;
+  @override
   Duration taskDuration;
   @override
   Timer? ownTimer;
 
   @override
   String toString() {
-    return 'Task(taskID: $taskID, taskName: $taskName, taskDescription: $taskDescription, taskComplete: $taskComplete, taskDuration: $taskDuration, ownTimer: $ownTimer)';
+    return 'Task(taskID: $taskID, taskName: $taskName, taskDescription: $taskDescription, taskComplete: $taskComplete, isTimerStart: $isTimerStart, taskDuration: $taskDuration, ownTimer: $ownTimer)';
   }
 
   @JsonKey(ignore: true)
@@ -198,6 +216,7 @@ abstract class _Task implements Task {
       required String taskName,
       required String taskDescription,
       required bool taskComplete,
+      bool isTimerStart,
       required Duration taskDuration,
       Timer? ownTimer}) = _$_Task;
 
@@ -213,6 +232,9 @@ abstract class _Task implements Task {
   @override
   bool get taskComplete;
   set taskComplete(bool value);
+  @override
+  bool get isTimerStart;
+  set isTimerStart(bool value);
   @override
   Duration get taskDuration;
   set taskDuration(Duration value);

@@ -32,8 +32,6 @@ abstract class TasksViewModelBase with Store {
   Future<void> getTasks() async {
     final List<TasksTableData> tasks = await taskRepo.loadAllTask();
     tasks.forEach((task) {
-      print("database Task :: " + task.toString());
-
       taskList.add(
         Task(
             taskID: task.id,
@@ -66,9 +64,9 @@ abstract class TasksViewModelBase with Store {
   @action
   Future<void> reduceTaskTime({required int index}) async {
     final currentTask = taskList[index];
-    print("currentTask :: " + currentTask.toString());
     currentTask.ownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (currentTask.taskDuration.inSeconds > 0) {
+        currentTask.isTimerStart = true;
         currentTask.taskDuration =
             Duration(seconds: currentTask.taskDuration.inSeconds - 1);
 
@@ -82,6 +80,23 @@ abstract class TasksViewModelBase with Store {
       sortList();
     });
   }
+
+/// It stops the timer of the task at the given index
+/// 
+/// Args:
+///   index (int): The index of the task in the list.
+  @action
+  Future<void> stopTaskTime({required int index}) async {
+    final currentTask = taskList[index];
+    if (currentTask.isTimerStart) {
+      if (taskList[index].ownTimer != null) taskList[index].ownTimer!.cancel();
+      currentTask.ownTimer = null;
+      await taskRepo.updateTask(
+          taskID: taskList[index].taskID, task: currentTask);
+    }
+    sortList();
+  }
+
 
   void sortList() {
     taskList.sort((a, b) {

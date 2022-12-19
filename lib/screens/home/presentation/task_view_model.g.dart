@@ -42,6 +42,15 @@ mixin _$TasksViewModel on TasksViewModelBase, Store {
         .run(() => super.reduceTaskTime(index: index));
   }
 
+  late final _$stopTaskTimeAsyncAction =
+      AsyncAction('TasksViewModelBase.stopTaskTime', context: context);
+
+  @override
+  Future<void> stopTaskTime({required int index}) {
+    return _$stopTaskTimeAsyncAction
+        .run(() => super.stopTaskTime(index: index));
+  }
+
   late final _$setTaskAsCompleteAsyncAction =
       AsyncAction('TasksViewModelBase.setTaskAsComplete', context: context);
 

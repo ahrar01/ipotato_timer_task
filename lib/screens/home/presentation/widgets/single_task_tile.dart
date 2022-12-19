@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../utils/assets.dart';
 
+import '../../../../utils/common_functions.dart';
 import '../../domain/task_modal.dart';
 
-class SingleTaskWidget extends StatelessWidget {
+class SingleTaskTile extends StatelessWidget {
   final Task task;
   final VoidCallback? onTaskStopped;
+  final VoidCallback? onTaskPause;
   final VoidCallback? onTaskCompletePressed;
   final VoidCallback? onTaskPlayed;
 
-  const SingleTaskWidget(
+  const SingleTaskTile(
       {Key? key,
       required this.task,
       this.onTaskStopped,
+      this.onTaskPause,
       this.onTaskCompletePressed,
       this.onTaskPlayed})
       : super(key: key);
@@ -42,30 +45,11 @@ class SingleTaskWidget extends StatelessWidget {
                 children: [
                   const Spacer(),
                   Text(
-                    "${task.taskDuration.inHours.toString().padLeft(2, "0")}:${task.taskDuration.inMinutes.remainder(60).toString().padLeft(2, "0")}:${task.taskDuration.inSeconds.remainder(60).toString().padLeft(2, "0")}",
+                    getTaskTime(task),
                     style: Theme.of(context)
                         .textTheme
                         .headlineLarge!
                         .copyWith(color: Theme.of(context).colorScheme.primary),
-                  ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.tertiary,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: IconButton(
-                      key: const ValueKey("StopButton_SingleTaskWidget"),
-                      padding: const EdgeInsets.all(3),
-                      onPressed: onTaskStopped,
-                      iconSize: 35,
-                      icon: Icon(
-                        Icons.stop,
-                        color: Theme.of(context).colorScheme.onTertiary,
-                      ),
-                    ),
                   ),
                   const SizedBox(
                     width: 7,
@@ -86,6 +70,43 @@ class SingleTaskWidget extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    width: 7,
+                  ),
+                  if (task.isTimerStart)
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.tertiary,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: IconButton(
+                        key: const ValueKey("StopButton_SingleTaskWidget"),
+                        padding: const EdgeInsets.all(3),
+                        onPressed: onTaskPause,
+                        iconSize: 35,
+                        icon: Icon(
+                          Icons.pause,
+                          color: Theme.of(context).colorScheme.onTertiary,
+                        ),
+                      ),
+                    ),
+                  if (!task.isTimerStart)
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.tertiary,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: IconButton(
+                        key: const ValueKey("StopButton_SingleTaskWidget"),
+                        padding: const EdgeInsets.all(3),
+                        onPressed: onTaskStopped,
+                        iconSize: 35,
+                        icon: Icon(
+                          Icons.stop,
+                          color: Theme.of(context).colorScheme.onTertiary,
+                        ),
+                      ),
+                    ),
                   const SizedBox(
                     width: 20,
                   ),

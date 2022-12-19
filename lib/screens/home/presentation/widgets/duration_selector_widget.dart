@@ -29,7 +29,7 @@ class DurationSelectorWidget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                      width: 20,
+                      width: 25,
                       child: TextField(
                         keyboardType: TextInputType.number,
                         inputFormatters: [
@@ -84,7 +84,7 @@ class DurationSelectorWidget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                      width: 20,
+                      width: 25,
                       child: TextField(
                         keyboardType: TextInputType.number,
                         inputFormatters: [
@@ -138,7 +138,7 @@ class DurationSelectorWidget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                      width: 20,
+                      width: 25,
                       child: TextField(
                         keyboardType: TextInputType.number,
                         inputFormatters: [
